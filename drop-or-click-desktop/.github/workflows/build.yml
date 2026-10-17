@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    working-directory: drop-or-click-desktop
+
 jobs:
   build:
     strategy:
@@ -17,10 +21,10 @@ jobs:
         include:
           - os: windows-latest
             args: --win
-            files: dist/*.exe
+            files: drop-or-click-desktop/dist/*.exe
           - os: macos-latest
             args: --mac --arm64
-            files: dist/*.dmg
+            files: drop-or-click-desktop/dist/*.dmg
 
     runs-on: ${{ matrix.os }}
 
@@ -31,6 +35,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: drop-or-click-desktop/package-lock.json
 
       - run: npm ci
 
