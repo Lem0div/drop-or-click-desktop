@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'"
+    />
+    <title>Drop Or Click</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: -apple-system, 'Segoe UI', sans-serif;
+        color: #111827;
+        background: #ffffff;
+      }
+      main {
+        text-align: center;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 24px;
+      }
+      p {
+        margin: 0 0 24px;
+        color: #6b7280;
+      }
+      button {
+        padding: 10px 24px;
+        border: 0;
+        border-radius: 12px;
+        background: #000000;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>연결할 수 없어요</h1>
+      <p>인터넷 연결을 확인하고 다시 시도해주세요.</p>
+      <button id="retry">다시 시도</button>
+    </main>
+    <script>
+      const url = new URLSearchParams(location.search).get('url');
+      document.getElementById('retry').addEventListener('click', () => {
+        if (url && url.startsWith('https://')) location.href = url;
+      });
+    </script>
+  </body>
+</html>

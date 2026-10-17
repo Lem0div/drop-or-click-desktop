@@ -1,0 +1,38 @@
+{
+  "name": "drop-or-click-desktop",
+  "version": "0.1.0",
+  "description": "Drop Or Click 데스크톱 앱",
+  "main": "main.js",
+  "author": "Lem0div",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac --arm64",
+    "build:mac-intel": "electron-builder --mac --x64",
+    "build:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.lem0div.droporclick",
+    "productName": "Drop Or Click",
+    "files": [
+      "main.js",
+      "offline.html"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "dmg",
+      "artifactName": "DropOrClick-mac-${arch}.${ext}"
+    },
+    "win": {
+      "target": "nsis",
+      "artifactName": "DropOrClick-Setup.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^44.9.0",
+    "electron-builder": "^26.15.3"
+  }
+}
